@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MarvelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::prefix('/')->group(function(){
+
+    Route::get('', [MarvelController::class, 'index']);
+    Route::get('/details/{id}', [MarvelController::class, 'details'])->name('marvel.details');
+    // Route::get('/details/{id}', [MarvelController::class, 'details']);
+
 });
+
